@@ -5,12 +5,14 @@ function resolve (dir) {
   return path.join(__dirname, '.', dir)
 }
 
-const isRELEASE = process.env.NODE_ENV === 'production'
+const env = process.env.NODE_ENV
+const isRELEASE = env === 'production'
+const isDoc = env === 'doc'
 
 module.exports = {
   entry: isRELEASE ? './src/stack/index.js' : './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: isDoc ? path.resolve(__dirname, './docs') : path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
     filename: 'build.js',
     libraryTarget: 'umd',
@@ -62,7 +64,7 @@ module.exports = {
   devtool: '#eval-source-map'
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (env !== 'development') {
   module.exports.devtool = false
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
