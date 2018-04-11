@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h1># Module Stack Visualization Demo</h1>
+    <h1># Stack Visualized Demo</h1>
     <div class="row">
       <div class="col-6">
         <p># Stack Data :</p>
@@ -9,15 +9,16 @@
             {{ index }} - {{ JSON.stringify(item)}}
           </li>
         </ul>
-        <p># Index : {{ idx }} | Red Cursor: {{ cursor }}</p>
+        <p># Index : <span class="blue">{{ idx }}</span> | Red Cursor: <span class="red">{{ cursor }}</span></p>
       </div>
       <div class="col-6">
         <h3># Render Area</h3>
         <div class="render">
           {{ currentData }}
         </div>
+        <br>
         <p>
-          <span>History Api</span>
+          <span>Api</span>
         </p>
         <p>
           <button @click="push">push</button>
@@ -25,7 +26,6 @@
           <button @click="backward">backward</button>
           <button @click="forward">forward</button>
         </p>
-        <br>
         <p>
           <button @click="insert">insert</button>
           <button @click="swap">swap</button>
@@ -168,5 +168,11 @@ button {
   float: left;
   width: 40%;
   padding: 0 5%;
+}
+.red{
+  color: #f22;
+}
+.blue{
+  color: #22f;
 }
 </style>
