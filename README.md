@@ -1,6 +1,29 @@
-# history
+# Stack
 
-> history module
+> Stack module
+
+```
+import Stack from 'one-stack'
+
+const stack = new Stack({
+    max: 10
+})
+```
+
+### API
+
+push(data)
+pop()
+forward()
+backward()
+
+insert(data)
+swap(oldIdx, newIdx)
+move(oldIdx, newIdx)
+
+get isEmpty
+get curData
+
 
 ## Build Setup
 
