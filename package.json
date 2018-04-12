@@ -1,7 +1,7 @@
 {
   "name": "one-stack",
   "description": "stack module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "roei <roeichow@gmail.com>",
   "license": "MIT",
   "main": "./dist/build.js",
