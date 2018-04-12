@@ -7,12 +7,12 @@
 ## Install
 
 ```
-$ npm install one-stack
+$ npm install oneview.stack
 ```
 ## Quick start
 
 ```
-import Stack from 'one-stack'
+import Stack from 'oneview.stack'
 
 const stack = new Stack(10)
 
