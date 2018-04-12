@@ -1,19 +1,20 @@
 <template>
   <div class="wrapper">
-    <h1># Stack Visualized Demo</h1>
-    <div class="row">
+    <h1>Stack Visualized Demo</h1>
+    <div class="cf">
       <div class="col-6">
-        <p># Stack Data :</p>
+        <p>Stack Data :</p>
         <ul class="stack">
-          <li v-for="(item, index) in caches" :key="index" :class="{'on': idx === index, 'cursor': cursor === index}">
+          <li class="cf" v-for="(item, index) in caches" :key="index" :class="{'on': idx === index, 'cursor': cursor === index}">
             {{ index }} - {{ JSON.stringify(item)}}
+            <span :style="{'background': `#${item.r}`}"></span>
           </li>
         </ul>
-        <p># Index : <span class="blue">{{ idx }}</span> | Red Cursor: <span class="red">{{ cursor }}</span></p>
+        <p>Stack Index : <span class="blue">{{ idx }}</span> | Red Cursor: <span class="red">{{ cursor }}</span></p>
       </div>
       <div class="col-6">
-        <h3># Render Area</h3>
-        <div class="render">
+        <h3>Render Area</h3>
+        <div class="render" :style="{'background': `#${currentData.r}`}">
           {{ currentData }}
         </div>
         <br>
@@ -51,7 +52,7 @@ export default {
   name: 'app',
   data () {
     return {
-      stack: new Stack({max: 10}),
+      stack: new Stack(10),
       cursor: 0
     }
   },
@@ -68,11 +69,13 @@ export default {
   },
   methods: {
     push () {
-      let r = Math.floor(Math.random() * 1e8).toString(16)
+      let r = Math.floor(Math.random() * 1e7).toString(16)
+      r = `f${r}`.slice(-6)
       this.stack.push({m: 'push', r})
     },
     insert () {
-      let r = Math.floor(Math.random() * 1e8).toString(16)
+      let r = Math.floor(Math.random() * 1e7).toString(16)
+      r = `f${r}`.slice(-6)
       this.stack.insert({m: 'insert', r})
     },
     pop () {
@@ -103,30 +106,80 @@ export default {
   },
   mounted () {
     window.h = this.stack
-    let r = Math.floor(Math.random() * 1e8).toString(16)
-    h.push({m: 'exist', r})
-      .push({m: 'exist', r: '13cd'})
-      .push({m: 'exist', r: '987adec'})
-      .push({m: 'exist', r: '42342'})
-      .push({m: 'exist', r: '2463'})
+    h.push({m: 'exist', r: '79a167'})
+      .push({m: 'exist', r: '647172'})
+      .push({m: 'exist', r: '909a76'})
+    this.push()
+    this.push()
+    this.insert()
+    this.insert()
   }
 }
 </script>
 
 <style>
+.wrapper {
+  padding: 20px;
+  color: #3d4248;
+}
+.cf {
+  zoom: 1;
+}
+.cf:before {
+  display: table;
+  content: '';
+}
+.cf:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+.col-6 {
+  float: left;
+  width: 40%;
+  padding: 0 5%;
+}
+.red{
+  color: #E91E63;
+}
+.blue{
+  color: #3F51B5;
+}
+h1{
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+  color: #3F51B5;
+}
+button {
+  padding: 10px;
+  background: none;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  outline: none;
+}
+button:hover {
+  background: #f8f8f8;
+}
+button:active {
+  background: #eee;
+}
 .stack {
   list-style: none;
   border: 1px solid #ccc;
   padding: 0;
   margin: 0;
 }
-li {
+.stack li {
   border: 1px solid #eee;
   padding: 10px;
   font-size: 14px;
 }
+.stack span {
+  float: right;
+  padding: 6px;
+}
 .on {
-  border: 1px solid #22f;
+  border: 1px solid #3F51B5;
   position: relative;
 }
 .on:before {
@@ -139,11 +192,11 @@ li {
   text-align: center;
   border-width: 8px 12px;
   border-style: solid;
-  border-color: transparent transparent transparent #22f;
+  border-color: transparent transparent transparent #3F51B5;
 }
 .cursor{
   position: relative;
-  border-bottom: 1px solid #f22;
+  border-bottom: 1px solid #E91E63;
 }
 .cursor:after {
   content: '';
@@ -155,24 +208,11 @@ li {
   text-align: center;
   border-width: 8px 12px;
   border-style: solid;
-  border-color: transparent #f22 transparent transparent;
-}
-button {
-  padding: 10px;
+  border-color: transparent #E91E63 transparent transparent;
 }
 .render {
   border: 1px solid #ddd;
   padding: 20px;
-}
-.col-6 {
-  float: left;
-  width: 40%;
-  padding: 0 5%;
-}
-.red{
-  color: #f22;
-}
-.blue{
-  color: #22f;
+  color: #fff;
 }
 </style>

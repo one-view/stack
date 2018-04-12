@@ -14,18 +14,13 @@ $ npm install one-stack
 ```
 import Stack from 'one-stack'
 
-const stack = new Stack({
-    max: 10,
-    debug: false
-})
+const stack = new Stack(10)
 
 stack.push({some: 'data'})
 ```
 ## Class
-### Stack(option)
-- `option`
-  - `max` stack max length, default: 20
-  - `debug` debug mode, console log when abled
+### Stack(max)
+- `max` number : stack max length, default 20
 
 return object
 - `index` number
@@ -68,16 +63,15 @@ stackInstance.insert({some: 'data'})
 ### .swap(oldIdx, newIdx)
 - `oldIdx` current target index
 - `newIdx` target position index
-
+```
+stackInstance.push(3, 2)
+```
 ### .move(oldIdx, newIdx)
 - `oldIdx` current target index
 - `newIdx` target position index
-
-
-get isEmpty
-
-get curData
-
+```
+stackInstance.push(6, 3)
+```
 
 ## Build Setup
 

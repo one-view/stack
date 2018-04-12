@@ -1,10 +1,6 @@
 class Stack {
-  constructor (option) {
+  constructor (max = 20) {
     this.data = []
-    this.init(option || {})
-  }
-
-  init ({max = 30}) {
     this.index = -1
     this.max = max
   }
@@ -68,14 +64,6 @@ class Stack {
     // if target index is lower than current index, remove a plused index cause has inserted one data
     this.data.splice(idx < newIdx ? idx : idx + 1, 1)
     return this
-  }
-
-  get isEmpty () {
-    return this.data.length === 0
-  }
-
-  get curData () {
-    return this.data[this.index]
   }
 }
 
