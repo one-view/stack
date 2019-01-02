@@ -14,7 +14,7 @@
       </div>
       <div class="col-6">
         <h3>Render Area</h3>
-        <div class="render" :style="{'background': `#${currentData.r}`}">
+        <div class="render" :style="{'background': `#${currentData.r}`}" v-if="currentData">
           {{ currentData }}
         </div>
         <br>
